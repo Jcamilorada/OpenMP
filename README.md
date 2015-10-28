@@ -1,5 +1,6 @@
 La carpera Original contiene los archivos fuentes originales y la carpeta resolution contiene la resolución de los ejercicios propuestos.
-autor: Juan Camilo Rada
+
+autores: Juan Camilo Rada - Federico Lopez
 
 1. helloword.c
 
