@@ -2,10 +2,10 @@
 #include <omp.h>   
 
 
-static long MULTIPLIER = 1366;
-static long num_trials = 100000;
-static long ADDEND     = 150889;
-static long PMOD = 714025;
+static long MULTIPLIER  = 1366;
+static long num_trials  = 100000;
+static long ADDEND      = 150889;
+static long PMOD        = 714025;
 static unsigned long long mult_n;
 
 #define MAX_THREADS 128
@@ -15,6 +15,9 @@ unsigned long long random_last = 0;
 #pragma omp threadprivate(random_last)
 
 double random_low, random_hi;
+
+
+
 double random()
 {
     unsigned long long random_next;
