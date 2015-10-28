@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <omp.h>
 #include <time.h>
+#define CHUNKSIZE 100
 
 static long num_steps = 100000000;
 
@@ -9,10 +10,10 @@ void main()
     double x, pi;
     double sum = 0.0;
     double step = 1.0/(double) num_steps;
-    int i;
-
+    int i, chunk;
+    chunk = CHUNKSIZE;
     clock_t start = clock();
-    #pragma omp parallel for private(x) schedule(static, 100) reduction(+:sum)
+    #pragma omp parallel for private(x) schedule(static, chunk) reduction(+:sum)
     for (i = 0; i < num_steps; i++)
     {
         x = (i + 0.5) * step;
