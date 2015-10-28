@@ -9,10 +9,11 @@ void main()
     double x, pi;
     double sum = 0.0;
     double step = 1.0/(double) num_steps;
+    int i;
 
     clock_t start = clock();
     #pragma omp parallel for private(x) schedule(static, 100) reduction(+:sum)
-    for (int i = 0; i < num_steps; i++)
+    for (i = 0; i < num_steps; i++)
     {
         x = (i + 0.5) * step;
         sum += 4.0/(1.0 + x*x);
