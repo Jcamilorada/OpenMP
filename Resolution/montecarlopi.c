@@ -6,7 +6,6 @@ static long MULTIPLIER  = 1366;
 static long num_trials  = 100000;
 static long ADDEND      = 150889;
 static long PMOD        = 714025;
-static unsigned long long mult_n;
 
 #define MAX_THREADS 128
 static unsigned long long seed_array[MAX_THREADS];
@@ -23,7 +22,7 @@ double random()
     unsigned long long random_next;
     double ret_val;
 
-    random_next = (unsigned long long)((mult_n  * random_last + ADDEND)% PMOD);
+    random_next = (unsigned long long)((MULTIPLIER  * random_last + ADDEND)% PMOD);
     random_last = random_next;
 
     ret_val = ((double)random_next/(double)PMOD)*(random_hi-random_low)+random_low;
@@ -51,7 +50,6 @@ void seed(double low_in, double hi_in)
         }
 
         nthreads = omp_get_num_threads();
-        mult_n = MULTIPLIER;
 
         iseed = PMOD / MULTIPLIER;
         seed_array[0] = iseed;
@@ -60,7 +58,6 @@ void seed(double low_in, double hi_in)
         {
             iseed = (unsigned long long) ((MULTIPLIER * iseed + ADDEND) % PMOD);
             seed_array[i] = iseed;
-            mult_n = (mult_n * MULTIPLIER) % PMOD;
         }
     }
 
