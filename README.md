@@ -19,3 +19,6 @@ autores: Juan Camilo Rada - Federico Lopez
     
 2. Pi. Para la ejecución se utilizo la setencia  #pragma omp parallel que permite la ejecución paralela de ciclos. Declarando la variable x como privada para cada hilo. 
 3. Montecarlo. Para la ejecución se utilizo la setencia  #pragma omp parallel que permite la ejecución paralela de ciclos. Declarando la variable x, y y test como privada para cada hilo.
+
+- Para la generación de semillas iniciales se utilizo la anotiación #pragma omp single que hace que una instrucción sea ejecutada por un unico hilo. El programa basicamente genera una cantidad de semillas correspondientes al número de hilos y los almacena en un array.
+
